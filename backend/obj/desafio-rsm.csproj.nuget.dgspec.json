@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pedrocassa/Documentos/desafio-rsm/desafio-rsm.csproj": {}
+    "/home/pedrocassa/Documentos/desafio-rsm/backend/desafio-rsm.csproj": {}
   },
   "projects": {
-    "/home/pedrocassa/Documentos/desafio-rsm/desafio-rsm.csproj": {
+    "/home/pedrocassa/Documentos/desafio-rsm/backend/desafio-rsm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pedrocassa/Documentos/desafio-rsm/desafio-rsm.csproj",
+        "projectUniqueName": "/home/pedrocassa/Documentos/desafio-rsm/backend/desafio-rsm.csproj",
         "projectName": "desafio-rsm",
-        "projectPath": "/home/pedrocassa/Documentos/desafio-rsm/desafio-rsm.csproj",
+        "projectPath": "/home/pedrocassa/Documentos/desafio-rsm/backend/desafio-rsm.csproj",
         "packagesPath": "/home/pedrocassa/.nuget/packages/",
-        "outputPath": "/home/pedrocassa/Documentos/desafio-rsm/obj/",
+        "outputPath": "/home/pedrocassa/Documentos/desafio-rsm/backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/pedrocassa/.nuget/NuGet/NuGet.Config"
