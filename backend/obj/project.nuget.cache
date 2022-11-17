@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "VW8TOeuWtwD3C6YjIsGAB0DKdKMdDELD7g8mlJU5ffY011djnsc4G0uTNjw47v/U7iUfyNDZ0dd2m3xu+Zjq8Q==",
+  "success": true,
+  "projectFilePath": "/home/pedrocassa/Documentos/desafio-rsm/desafio-rsm.csproj",
+  "expectedPackageFiles": [
+    "/home/pedrocassa/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/pedrocassa/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/pedrocassa/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/home/pedrocassa/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/home/pedrocassa/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/home/pedrocassa/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
