@@ -9,6 +9,6 @@ namespace desafio_rsm.Models
         public string Cpf { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }
