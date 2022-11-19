@@ -8,16 +8,20 @@
     ".NETCoreApp,Version=v6.0": {
       "desafio-rsm/1.0.0": {
         "dependencies": {
+<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore.Design": "7.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.0",
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
           "desafio-rsm.dll": {}
         }
       },
+<<<<<<< HEAD
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -195,6 +199,9 @@
           }
         }
       },
+=======
+      "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
       "Microsoft.OpenApi/1.2.3": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -203,6 +210,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "Mono.TextTemplating/2.2.1": {
         "dependencies": {
           "System.CodeDom": "4.4.0"
@@ -240,6 +248,8 @@
           }
         }
       },
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
       "Swashbuckle.AspNetCore/6.2.3": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "3.0.0",
@@ -277,6 +287,7 @@
             "fileVersion": "6.2.3.0"
           }
         }
+<<<<<<< HEAD
       },
       "System.CodeDom/4.4.0": {
         "runtime": {
@@ -317,6 +328,8 @@
             "fileVersion": "7.0.22.51805"
           }
         }
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
       }
     }
   },
@@ -326,6 +339,7 @@
       "serviceable": false,
       "sha512": ""
     },
+<<<<<<< HEAD
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
@@ -375,6 +389,8 @@
       "path": "microsoft.entityframeworkcore.tools/7.0.0",
       "hashPath": "microsoft.entityframeworkcore.tools.7.0.0.nupkg.sha512"
     },
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
       "serviceable": true,
@@ -382,6 +398,7 @@
       "path": "microsoft.extensions.apidescription.server/3.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
     "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -452,6 +469,8 @@
       "path": "microsoft.extensions.primitives/7.0.0",
       "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
     },
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
     "Microsoft.OpenApi/1.2.3": {
       "type": "package",
       "serviceable": true,
@@ -459,6 +478,7 @@
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
     },
+<<<<<<< HEAD
     "Mono.TextTemplating/2.2.1": {
       "type": "package",
       "serviceable": true,
@@ -480,6 +500,8 @@
       "path": "npgsql.entityframeworkcore.postgresql/7.0.0",
       "hashPath": "npgsql.entityframeworkcore.postgresql.7.0.0.nupkg.sha512"
     },
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
       "serviceable": true,
@@ -507,6 +529,7 @@
       "sha512": "sha512-bCRI87uKJVb4G+KURWm8LQrL64St04dEFZcF6gIM67Zc0Sr/N47EO83ybLMYOvfNdO1DCv8xwPcrz9J/VEhQ5g==",
       "path": "swashbuckle.aspnetcore.swaggerui/6.2.3",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+<<<<<<< HEAD
     },
     "System.CodeDom/4.4.0": {
       "type": "package",
@@ -535,6 +558,8 @@
       "sha512": "sha512-DaGSsVqKsn/ia6RG8frjwmJonfos0srquhw09TlT8KRw5I43E+4gs+/bZj4K0vShJ5H9imCuXupb4RmS+dBy3w==",
       "path": "system.text.json/7.0.0",
       "hashPath": "system.text.json.7.0.0.nupkg.sha512"
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
     }
   }
 }

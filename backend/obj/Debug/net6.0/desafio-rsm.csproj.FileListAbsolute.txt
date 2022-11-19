@@ -52,6 +52,7 @@
 /home/pedrocassa/Documentos/desafio-rsm/backend/obj/Debug/net6.0/ref/desafio-rsm.dll
 /home/pedrocassa/Documentos/desafio-rsm/backend/obj/Debug/net6.0/desafio-rsm.pdb
 /home/pedrocassa/Documentos/desafio-rsm/backend/obj/Debug/net6.0/desafio-rsm.genruntimeconfig.cache
+<<<<<<< HEAD
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/Humanizer.dll
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -74,3 +75,5 @@
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/System.Text.Json.dll
 /home/pedrocassa/Documentos/desafio-rsm/backend/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+=======
+>>>>>>> 3d6ddd27eda7cb5c85656419390371b1fe922a97
