@@ -6,7 +6,7 @@ export function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/people" element={<ListPeople />} />
+        <Route path="/" element={<ListPeople />} />
         <Route path="/new-person" element={<CreatePerson />} />
         <Route path="/update-person/:id" element={<UpdatePerson />} />
       </Routes>
