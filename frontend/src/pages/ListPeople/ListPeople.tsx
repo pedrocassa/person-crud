@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'shared'
+import { Button, SearchField, Table } from 'shared'
 import * as S from './styles'
 
 export const ListPeople: React.FC = () => {
@@ -52,6 +52,12 @@ export const ListPeople: React.FC = () => {
   return (
     <S.Container>
       <S.Title>Listagem de pessoas</S.Title>
+      <S.HeaderContainer>
+        <SearchField />
+        <Button onClick={() => console.log('Entrou')} outlined>
+          Cadastrar
+        </Button>
+      </S.HeaderContainer>
       <Table columns={columns} data={data} />
     </S.Container>
   )
