@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin: 20px 30px;
+  flex: 1;
+  height: 100%;
+  padding: 20px 30px;
 `
 
 export const Title = styled.h1`
