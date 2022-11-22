@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './styles'
 
-export const UpdatePerson: React.FC = () => {
+export function AddressForm() {
   return <S.Container></S.Container>
 }

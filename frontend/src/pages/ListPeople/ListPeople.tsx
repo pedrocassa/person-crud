@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, SearchField, Table } from 'shared'
 import * as S from './styles'
 
@@ -49,12 +50,16 @@ export const ListPeople: React.FC = () => {
     []
   )
 
+  const navigate = useNavigate()
+
+  const handleCreateNewPersonButtonClick = () => navigate('/new-person')
+
   return (
     <S.Container>
       <S.Title>Listagem de pessoas</S.Title>
       <S.HeaderContainer>
         <SearchField />
-        <Button onClick={() => console.log('Entrou')} outlined>
+        <Button onClick={handleCreateNewPersonButtonClick} outlined>
           Cadastrar
         </Button>
       </S.HeaderContainer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CreatePerson, ListPeople, UpdatePerson } from 'pages'
+import { CreatePerson, ListPeople } from 'pages'
 
 export function AppRouter() {
   return (
@@ -8,7 +8,7 @@ export function AppRouter() {
       <Routes>
         <Route path="/" element={<ListPeople />} />
         <Route path="/new-person" element={<CreatePerson />} />
-        <Route path="/update-person/:id" element={<UpdatePerson />} />
+        <Route path="/update-person/:id" element={<CreatePerson />} />
       </Routes>
     </BrowserRouter>
   )

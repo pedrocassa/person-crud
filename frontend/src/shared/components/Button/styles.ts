@@ -19,6 +19,7 @@ const ButtonModifiers = {
 }
 
 export const Container = styled.button<StyledButtonProps>`
+  height: 40px;
   cursor: pointer;
   background-color: transparent;
   padding: 10px 30px;
