@@ -5,16 +5,18 @@ type InputProps = {
   label: string
   error?: string
   mask?: (string | RegExp)[]
+  fullWidth?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
 export const Input: React.FC<InputProps> = ({
   label,
   error,
   mask,
+  fullWidth,
   ...props
 }) => {
   return (
-    <S.Container>
+    <S.Container fullWidth={fullWidth}>
       <S.Label>{label}</S.Label>
 
       <S.InputContainer>

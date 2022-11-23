@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import Masked from 'react-text-mask'
 
-export const Container = styled.div``
+type ContainerProps = {
+  fullWidth?: boolean
+}
+
+export const Container = styled.div<ContainerProps>`
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : '35%')};
+`
 
 export const Label = styled.p`
   font-size: ${({ theme }) => theme.font.sizes.small};
@@ -10,7 +16,6 @@ export const Label = styled.p`
 `
 
 export const InputContainer = styled.div`
-  width: 35%;
   height: 40px;
   border: 1px solid black;
   border-radius: 10px;
