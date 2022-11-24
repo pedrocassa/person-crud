@@ -1,31 +1,19 @@
 import React from 'react'
 import * as S from './styles'
 import { cepService } from 'services'
-import { useFormik } from 'formik'
-import {
-  AddressFormType,
-  addressInitialValues,
-  addressValidationSchema
-} from './validation'
+import { useFormikContext } from 'formik'
+import { CreatePersonFormType } from '../../../validation'
 import { Input, Masks } from 'shared'
 
 export function AddressForm() {
   const {
     values,
     handleChange,
-    handleSubmit,
     setFieldValue,
     setFieldTouched,
     touched,
     errors
-  } = useFormik<AddressFormType>({
-    initialValues: addressInitialValues,
-    validationSchema: addressValidationSchema,
-    validateOnMount: true,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
-    }
-  })
+  } = useFormikContext<CreatePersonFormType>()
 
   const searchCep = async (cep: string) => {
     try {
@@ -43,7 +31,7 @@ export function AddressForm() {
   console.log(errors, touched)
 
   return (
-    <S.Container onSubmit={handleSubmit}>
+    <S.Container>
       <S.Row>
         <S.Column>
           <Input
