@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Input, Masks, RadioButtonOption, RadiouInput } from 'shared'
-import { PersonType } from 'types/enums'
+import { PersonType } from 'types/Enums'
 import * as S from './styles'
 
 export function PersonForm() {

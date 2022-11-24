@@ -21,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
 
       <S.InputContainer>
         {mask ? (
-          <S.MaskedInput mask={mask} {...props} />
+          <S.MaskedInput mask={mask} guide={false} {...props} />
         ) : (
           <S.Input {...props}></S.Input>
         )}
