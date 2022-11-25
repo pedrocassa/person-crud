@@ -15,8 +15,6 @@ export function PersonForm() {
     errors
   } = useFormikContext<CreatePersonFormType>()
 
-  const [checkedValue, setCheckedValued] = useState('')
-
   const radiouButtonOptions: RadioButtonOption[] = [
     { optionLabel: 'Pessoa Física', value: PersonType.PHYSICAL_PERSON },
     { optionLabel: 'Pessoa Jurídica', value: PersonType.LEGAL_PERSON }
@@ -25,18 +23,6 @@ export function PersonForm() {
   return (
     <S.Container>
       <S.Row>
-        <S.Column>
-          <Input
-            label={'Nome completo'}
-            value={values.fullName}
-            onChange={handleChange('fullName')}
-            onBlur={() => setFieldTouched('fullName', true)}
-            error={
-              touched.fullName && errors.fullName ? errors.fullName : undefined
-            }
-            fullWidth
-          />
-        </S.Column>
         <S.Column>
           <RadiouInput
             label={'Tipo de pessoa'}
@@ -53,6 +39,19 @@ export function PersonForm() {
         </S.Column>
       </S.Row>
       <S.Row>
+        <S.Column>
+          <Input
+            label={'Nome completo'}
+            value={values.fullName}
+            onChange={handleChange('fullName')}
+            onBlur={() => setFieldTouched('fullName', true)}
+            error={
+              touched.fullName && errors.fullName ? errors.fullName : undefined
+            }
+            fullWidth
+          />
+        </S.Column>
+        <S.Separator />
         <S.Column>
           {values.personType === PersonType.LEGAL_PERSON ? (
             <Input
@@ -76,6 +75,7 @@ export function PersonForm() {
             />
           )}
         </S.Column>
+        <S.Separator />
         <S.Column>
           {values.personType === PersonType.LEGAL_PERSON ? (
             <Input

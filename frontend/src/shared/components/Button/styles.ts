@@ -25,8 +25,8 @@ export const Container = styled.button<StyledButtonProps>`
   padding: 10px 30px;
 
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor ? backgroundColor : 'black'};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor ? theme.colors[backgroundColor] : 'black'};
 
   border-radius: 10px;
   border: none;
