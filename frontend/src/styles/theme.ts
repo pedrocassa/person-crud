@@ -1,7 +1,8 @@
 export const theme = {
   colors: {
     white: '#FFFFFF',
-    error: '#B03060'
+    error: '#B03060',
+    cancel: '#FF5757'
   },
   font: {
     weight: {

@@ -3,7 +3,7 @@ import * as S from './styles'
 import { cepService } from 'services'
 import { useFormikContext } from 'formik'
 import { CreatePersonFormType } from '../../../validation'
-import { Input, Masks } from 'shared'
+import { Dropdown, Input, Masks, UFs } from 'shared'
 
 export function AddressForm() {
   const {
@@ -33,7 +33,7 @@ export function AddressForm() {
   return (
     <S.Container>
       <S.Row>
-        <S.Column>
+        <S.Column proportionNumber={1}>
           <Input
             label={'CEP'}
             mask={Masks.onlyNumbers}
@@ -47,7 +47,21 @@ export function AddressForm() {
             fullWidth
           />
         </S.Column>
-        <S.Column>
+        <S.Column proportionNumber={3}></S.Column>
+      </S.Row>
+      <S.Row>
+        <S.Column proportionNumber={3}>
+          <Input
+            label={'Endereço'}
+            value={values.street}
+            onChange={handleChange('street')}
+            onBlur={() => setFieldTouched('street', true)}
+            error={touched.street && errors.street ? errors.street : undefined}
+            fullWidth
+          />
+        </S.Column>
+        <S.Separator />
+        <S.Column proportionNumber={1}>
           <Input
             label={'Número'}
             mask={Masks.onlyNumbers}
@@ -61,19 +75,8 @@ export function AddressForm() {
             fullWidth
           />
         </S.Column>
-      </S.Row>
-      <S.Row>
-        <S.Column>
-          <Input
-            label={'Endereço'}
-            value={values.street}
-            onChange={handleChange('street')}
-            onBlur={() => setFieldTouched('street', true)}
-            error={touched.street && errors.street ? errors.street : undefined}
-            fullWidth
-          />
-        </S.Column>
-        <S.Column>
+        <S.Separator />
+        <S.Column proportionNumber={2}>
           <Input
             label={'Complemento'}
             value={values.complement}
@@ -103,6 +106,7 @@ export function AddressForm() {
             fullWidth
           />
         </S.Column>
+        <S.Separator />
         <S.Column>
           <Input
             label={'Cidade'}
@@ -113,6 +117,19 @@ export function AddressForm() {
             fullWidth
           />
         </S.Column>
+      </S.Row>
+      <S.Row>
+        <S.Column proportionNumber={2}>
+          <Dropdown
+            label={'UF'}
+            dropdownOptions={UFs}
+            value={values.uf}
+            onChange={handleChange('uf')}
+            onBlur={() => setFieldTouched('uf', true)}
+            error={touched.uf && errors.uf ? errors.uf : undefined}
+          />
+        </S.Column>
+        <S.Column proportionNumber={8}></S.Column>
       </S.Row>
     </S.Container>
   )
