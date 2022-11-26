@@ -1,11 +1,22 @@
 import React from 'react'
 import * as S from './styles'
 import { cepService } from 'services'
-import { useFormikContext } from 'formik'
-import { CreatePersonFormType } from '../../../validation'
-import { Dropdown, Input, Masks, UFs } from 'shared'
+import { FieldArrayRenderProps, useFormikContext } from 'formik'
+import {
+  addressFormInitialValues,
+  CreatePersonFormType
+} from '../../../validation'
+import { Button, Dropdown, Input, Masks, UFs } from 'shared'
 
-export function AddressForm() {
+type AddressFormProps = {
+  formIndex: number
+  arrayHelpers: FieldArrayRenderProps
+}
+
+export const AddressForm: React.FC<AddressFormProps> = ({
+  formIndex,
+  arrayHelpers
+}) => {
   const {
     values,
     handleChange,
@@ -28,7 +39,14 @@ export function AddressForm() {
     }
   }
 
-  console.log(errors, touched)
+  const handleClickOnAddButton = () =>
+    arrayHelpers.push(addressFormInitialValues)
+
+  const handleClickOnRemoveButton = () => arrayHelpers.remove(formIndex)
+
+  const showAddButton = formIndex === values.addresses.length - 1
+
+  const showRemoveButton = values.addresses.length > 2
 
   return (
     <S.Container>
@@ -37,13 +55,19 @@ export function AddressForm() {
           <Input
             label={'CEP'}
             mask={Masks.onlyNumbers}
-            value={values.cep}
-            onChange={handleChange('cep')}
+            value={values.addresses[formIndex].cep}
+            onChange={handleChange(`address[${formIndex}].cep`)}
             onBlur={() => {
-              setFieldTouched('cep', true)
-              values.cep && searchCep(values.cep)
+              setFieldTouched(`address[${formIndex}].cep`, true)
+              values.addresses[formIndex].cep &&
+                searchCep(values.addresses[formIndex].cep)
             }}
-            error={touched.cep && errors.cep ? errors.cep : undefined}
+            // error={
+            //   touched.addresses?.[formIndex]?.cep &&
+            //   errors.addresses.[formIndex]?.cep
+            //     ? errors.addresses?.[formIndex]?.cep
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -53,10 +77,15 @@ export function AddressForm() {
         <S.Column proportionNumber={3}>
           <Input
             label={'Endereço'}
-            value={values.street}
-            onChange={handleChange('street')}
-            onBlur={() => setFieldTouched('street', true)}
-            error={touched.street && errors.street ? errors.street : undefined}
+            value={values.addresses[formIndex].street}
+            onChange={handleChange(`address[${formIndex}].street`)}
+            onBlur={() => setFieldTouched(`address[${formIndex}].street`, true)}
+            // error={
+            //   touched.addresses[formIndex].street &&
+            //   errors.addresses[formIndex].street
+            //     ? errors.addresses[formIndex].street
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -65,13 +94,19 @@ export function AddressForm() {
           <Input
             label={'Número'}
             mask={Masks.onlyNumbers}
-            value={values.number}
-            onChange={handleChange('number')}
+            value={values.addresses[formIndex].number}
+            onChange={handleChange(`address[${formIndex}].number`)}
             onBlur={() => {
-              setFieldTouched('number', true)
-              values.number && searchCep(values.number)
+              setFieldTouched(`address[${formIndex}].number`, true)
+              values.addresses[formIndex].number &&
+                searchCep(values.addresses[formIndex].street)
             }}
-            error={touched.number && errors.number ? errors.number : undefined}
+            // error={
+            //   touched.addresses[formIndex].street &&
+            //   errors.addresses[formIndex].street
+            //     ? errors.addresses[formIndex].street
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -79,14 +114,17 @@ export function AddressForm() {
         <S.Column proportionNumber={2}>
           <Input
             label={'Complemento'}
-            value={values.complement}
-            onChange={handleChange('complement')}
-            onBlur={() => setFieldTouched('complement', true)}
-            error={
-              touched.complement && errors.complement
-                ? errors.complement
-                : undefined
+            value={values.addresses[formIndex].complement}
+            onChange={handleChange(`address[${formIndex}].complement`)}
+            onBlur={() =>
+              setFieldTouched(`address[${formIndex}].complement`, true)
             }
+            // error={
+            //   touched.addresses[formIndex].complement &&
+            //   errors.addresses[formIndex].complement
+            //     ? errors.addresses[formIndex].complement
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -95,14 +133,17 @@ export function AddressForm() {
         <S.Column>
           <Input
             label={'Bairro'}
-            value={values.neighborhood}
-            onChange={handleChange('neighborhood')}
-            onBlur={() => setFieldTouched('neighborhood', true)}
-            error={
-              touched.neighborhood && errors.neighborhood
-                ? errors.neighborhood
-                : undefined
+            value={values.addresses[formIndex].neighborhood}
+            onChange={handleChange(`address[${formIndex}].neighborhood`)}
+            onBlur={() =>
+              setFieldTouched(`address[${formIndex}].neighborhood`, true)
             }
+            // error={
+            //   touched.addresses[formIndex].neighborhood &&
+            //   errors.addresses[formIndex].neighborhood
+            //     ? errors.addresses[formIndex].neighborhood
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -110,10 +151,15 @@ export function AddressForm() {
         <S.Column>
           <Input
             label={'Cidade'}
-            value={values.city}
-            onChange={handleChange('city')}
-            onBlur={() => setFieldTouched('city', true)}
-            error={touched.city && errors.city ? errors.city : undefined}
+            value={values.addresses[formIndex].city}
+            onChange={handleChange(`address[${formIndex}].city`)}
+            onBlur={() => setFieldTouched(`address[${formIndex}].city`, true)}
+            // error={
+            //   touched.addresses[formIndex].city &&
+            //   errors.addresses[formIndex].city
+            //     ? errors.addresses[formIndex].city
+            //     : undefined
+            // }
             fullWidth
           />
         </S.Column>
@@ -123,13 +169,33 @@ export function AddressForm() {
           <Dropdown
             label={'UF'}
             dropdownOptions={UFs}
-            value={values.uf}
-            onChange={handleChange('uf')}
-            onBlur={() => setFieldTouched('uf', true)}
-            error={touched.uf && errors.uf ? errors.uf : undefined}
+            value={values.addresses[formIndex].uf}
+            onChange={handleChange(`address[${formIndex}].uf`)}
+            onBlur={() => setFieldTouched(`address[${formIndex}].uf`, true)}
+            // error={
+            //   touched.addresses[formIndex].uf && errors.addresses[formIndex].uf
+            //     ? errors.addresses[formIndex].uf
+            //     : undefined
+            // }
           />
         </S.Column>
-        <S.Column proportionNumber={8}></S.Column>
+        <S.Column proportionNumber={4}></S.Column>
+        <S.Column proportionNumber={4}>
+          <S.ButtonContainer>
+            {showRemoveButton && (
+              <Button onClick={handleClickOnRemoveButton}>Remover</Button>
+            )}
+
+            {showAddButton && (
+              <>
+                <S.Separator />
+                <Button onClick={handleClickOnAddButton} outlined>
+                  Adicionar outro endereço
+                </Button>
+              </>
+            )}
+          </S.ButtonContainer>
+        </S.Column>
       </S.Row>
     </S.Container>
   )

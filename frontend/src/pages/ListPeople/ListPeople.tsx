@@ -10,19 +10,37 @@ export const ListPeople: React.FC = () => {
         col1: '154.840.397-03',
         col2: 'Pedro Cassa Dias',
         col3: '09/05/2000',
-        col4: 'Rua Utrillo 86, Apto.101'
+        col4: 'Rua Utrillo 86, Apto.101',
+        col5: (
+          <>
+            <Button onClick={() => null}>Teste</Button>
+            <Button onClick={() => null}>Teste 1</Button>
+          </>
+        )
       },
       {
         col1: '154.840.397-03',
         col2: 'Pedro Cassa Dias',
         col3: '09/05/2000',
-        col4: 'Rua Utrillo 86, Apto.101'
+        col4: 'Rua Utrillo 86, Apto.101',
+        col5: (
+          <>
+            <Button onClick={() => null}>Teste</Button>
+            <Button onClick={() => null}>Teste 1</Button>
+          </>
+        )
       },
       {
         col1: '154.840.397-03',
         col2: 'Pedro Cassa Dias',
         col3: '09/05/2000',
-        col4: 'Rua Utrillo 86, Apto.101'
+        col4: 'Rua Utrillo 86, Apto.101',
+        col5: (
+          <>
+            <Button onClick={() => null}>Teste</Button>
+            <Button onClick={() => null}>Teste 1</Button>
+          </>
+        )
       }
     ],
     []
@@ -45,6 +63,10 @@ export const ListPeople: React.FC = () => {
       {
         Header: 'Endereços',
         accessor: 'col4'
+      },
+      {
+        Header: 'Ações',
+        accessor: 'col5'
       }
     ],
     []

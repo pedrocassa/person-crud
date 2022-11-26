@@ -1,5 +1,4 @@
 import React, { SelectHTMLAttributes } from 'react'
-import { MdKeyboardArrowDown } from 'react-icons/md'
 import * as S from './styles'
 
 type DropdownProps = {

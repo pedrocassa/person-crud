@@ -21,6 +21,14 @@ export const Column = styled.div<ColumnProps>`
   flex: ${({ proportionNumber }) => (proportionNumber ? proportionNumber : 1)};
 `
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+`
+
 export const Separator = styled.div`
   width: 20px;
 `

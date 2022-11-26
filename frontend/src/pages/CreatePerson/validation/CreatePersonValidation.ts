@@ -1,12 +1,7 @@
 import { Errors, PersonType } from 'types/Enums'
 import * as yup from 'yup'
 
-export type CreatePersonFormType = {
-  fullName: string
-  cpf: string
-  cnpj: string
-  birthDate: string
-  foundingDate: string
+export type AddressFormType = {
   cep: string
   street: string
   number: string
@@ -14,7 +9,26 @@ export type CreatePersonFormType = {
   city: string
   uf: string
   neighborhood: string
+}
+
+export const addressFormInitialValues = {
+  cep: '',
+  street: '',
+  number: '',
+  complement: '',
+  city: '',
+  uf: '',
+  neighborhood: ''
+}
+
+export type CreatePersonFormType = {
+  fullName: string
+  cpf: string
+  cnpj: string
+  birthDate: string
+  foundingDate: string
   personType: PersonType
+  addresses: AddressFormType[]
 }
 
 export const initialValues: CreatePersonFormType = {
@@ -23,14 +37,8 @@ export const initialValues: CreatePersonFormType = {
   cnpj: '',
   birthDate: '',
   foundingDate: '',
-  cep: '',
-  street: '',
-  number: '',
-  complement: '',
-  city: '',
-  uf: '',
-  neighborhood: '',
-  personType: PersonType.PHYSICAL_PERSON
+  personType: PersonType.PHYSICAL_PERSON,
+  addresses: new Array(2).fill(addressFormInitialValues)
 }
 
 export const validationSchema = yup.object().shape({
@@ -52,11 +60,19 @@ export const validationSchema = yup.object().shape({
     is: PersonType.LEGAL_PERSON,
     then: yup.string().required(Errors.REQUIRED_FIELD)
   }),
-  cep: yup.string().required(Errors.REQUIRED_FIELD),
-  street: yup.string().required(Errors.REQUIRED_FIELD),
-  number: yup.string().required(Errors.REQUIRED_FIELD),
-  complement: yup.string(),
-  city: yup.string().required(Errors.REQUIRED_FIELD),
-  uf: yup.string().required(Errors.REQUIRED_FIELD),
-  neighborhood: yup.string().required(Errors.REQUIRED_FIELD)
+  addresses: yup
+    .array()
+    .of(
+      yup.object().shape({
+        cep: yup.string().required(Errors.REQUIRED_FIELD),
+        street: yup.string().required(Errors.REQUIRED_FIELD),
+        number: yup.string().required(Errors.REQUIRED_FIELD),
+        complement: yup.string(),
+        city: yup.string().required(Errors.REQUIRED_FIELD),
+        uf: yup.string().required(Errors.REQUIRED_FIELD),
+        neighborhood: yup.string().required(Errors.REQUIRED_FIELD)
+      })
+    )
+    .min(2, Errors.REQUIRED_FIELD)
+    .required(Errors.REQUIRED_FIELD)
 })
