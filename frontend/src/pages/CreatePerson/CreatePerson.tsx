@@ -5,7 +5,6 @@ import { Button } from 'shared'
 import { AddressForm, PersonForm } from './components'
 import * as S from './styles'
 import { initialValues, validationSchema } from './validation'
-import { addressFormInitialValues } from './validation/CreatePersonValidation'
 
 export const CreatePerson: React.FC = () => {
   const navigate = useNavigate()
@@ -19,6 +18,7 @@ export const CreatePerson: React.FC = () => {
         onSubmit={(values) => {
           alert(JSON.stringify(values, null, 2))
         }}
+        validateOnMount
       >
         {({ values, handleSubmit }) => (
           <>
@@ -60,6 +60,7 @@ export const CreatePerson: React.FC = () => {
               >
                 Cancelar
               </Button>
+              <S.Separator />
               <Button type={'submit'} onClick={() => handleSubmit()} outlined>
                 Cadastrar
               </Button>

@@ -38,7 +38,7 @@ export const initialValues: CreatePersonFormType = {
   birthDate: '',
   foundingDate: '',
   personType: PersonType.PHYSICAL_PERSON,
-  addresses: new Array(2).fill(addressFormInitialValues)
+  addresses: [addressFormInitialValues]
 }
 
 export const validationSchema = yup.object().shape({
@@ -73,6 +73,6 @@ export const validationSchema = yup.object().shape({
         neighborhood: yup.string().required(Errors.REQUIRED_FIELD)
       })
     )
-    .min(2, Errors.REQUIRED_FIELD)
+    .min(2, Errors.MINIMUM_OF_TWO)
     .required(Errors.REQUIRED_FIELD)
 })

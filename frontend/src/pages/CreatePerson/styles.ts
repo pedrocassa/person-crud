@@ -30,6 +30,11 @@ export const Divider = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  padding: 50px 0;
+`
+
+export const Separator = styled.div`
+  margin-right: 20px;
 `

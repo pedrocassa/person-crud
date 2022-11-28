@@ -1,6 +1,7 @@
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
-import { Button, SearchField, Table } from 'shared'
+import { Button, IconButton, SearchField, Table } from 'shared'
 import * as S from './styles'
 
 export const ListPeople: React.FC = () => {
@@ -12,10 +13,15 @@ export const ListPeople: React.FC = () => {
         col3: '09/05/2000',
         col4: 'Rua Utrillo 86, Apto.101',
         col5: (
-          <>
-            <Button onClick={() => null}>Teste</Button>
-            <Button onClick={() => null}>Teste 1</Button>
-          </>
+          <S.Row>
+            <IconButton onClick={() => null}>
+              <MdEdit size={24} />
+            </IconButton>
+            <S.Separator />
+            <IconButton onClick={() => null}>
+              <MdDelete size={24} />
+            </IconButton>
+          </S.Row>
         )
       },
       {
@@ -24,10 +30,15 @@ export const ListPeople: React.FC = () => {
         col3: '09/05/2000',
         col4: 'Rua Utrillo 86, Apto.101',
         col5: (
-          <>
-            <Button onClick={() => null}>Teste</Button>
-            <Button onClick={() => null}>Teste 1</Button>
-          </>
+          <S.Row>
+            <IconButton onClick={() => null}>
+              <MdEdit size={24} />
+            </IconButton>
+            <S.Separator />
+            <IconButton onClick={() => null}>
+              <MdDelete size={24} />
+            </IconButton>
+          </S.Row>
         )
       },
       {
@@ -36,10 +47,15 @@ export const ListPeople: React.FC = () => {
         col3: '09/05/2000',
         col4: 'Rua Utrillo 86, Apto.101',
         col5: (
-          <>
-            <Button onClick={() => null}>Teste</Button>
-            <Button onClick={() => null}>Teste 1</Button>
-          </>
+          <S.Row>
+            <IconButton onClick={() => null}>
+              <MdEdit size={24} />
+            </IconButton>
+            <S.Separator />
+            <IconButton onClick={() => null}>
+              <MdDelete size={24} />
+            </IconButton>
+          </S.Row>
         )
       }
     ],
