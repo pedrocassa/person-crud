@@ -4,6 +4,7 @@ using desafio_rsm.Models;
 using desafio_rsm.Wrappers;
 using desafio_rsm.Dtos;
 using desafio_rsm.Helpers;
+using System;
 
 namespace desafio_rsm.Controllers
 {
@@ -50,8 +51,35 @@ namespace desafio_rsm.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Post(Person person)
+        public async Task<IActionResult> Post(CreatePersonDTO dto)
         {
+            var person = new Person
+            {
+                Name = dto.Name,
+                Document = dto.Document,
+                ReferenceDate = dto.ReferenceDate
+            };
+
+            var addresses = new List<Address>();
+
+            foreach (var dtoAddress in dto.Addresses)
+            {
+                var address = new Address
+                {
+                    Cep = dtoAddress.Cep,
+                    Street = dtoAddress.Street,
+                    Number = dtoAddress.Number,
+                    Complement = dtoAddress.Complement,
+                    Neighborhood = dtoAddress.Neighborhood,
+                    City = dtoAddress.City,
+                    Uf = dtoAddress.Uf
+                };
+
+                addresses.Append(address);
+            }
+
+            person.Addresses = addresses;
+
             _repository.CreatePerson(person);
 
             return await _repository.SaveChangesAsync() ? Ok("Pessoa adicionada com sucesso") : BadRequest("Erro ao salvar a pessoa");
@@ -64,9 +92,9 @@ namespace desafio_rsm.Controllers
 
             if (p == null) return NotFound("Pessoa não encontrada");
 
-            p.FullName = person.FullName ?? p.FullName;
-            p.Cpf = person.Cpf ?? p.Cpf;
-            p.BirthDate = person.BirthDate != new DateTime() ? person.BirthDate : p.BirthDate;
+            p.Name = person.Name ?? p.Name;
+            p.Document = person.Document ?? p.Document;
+            p.ReferenceDate = person.ReferenceDate != new DateTime() ? person.ReferenceDate : p.ReferenceDate;
 
             _repository.UpdatePerson(p);
 

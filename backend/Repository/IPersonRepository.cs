@@ -9,9 +9,10 @@ namespace desafio_rsm.Repository
         Task<IEnumerable<Person>> GetPeople();
         Task<Person> GetPerson(long id);
         Task<int> CountPeople();
+        Task<Boolean> FindDocument(string document);
+        Task<Boolean> SaveChangesAsync();
         void CreatePerson(Person person);
         void UpdatePerson(Person person);
         void DeletePerson(Person person);
-        Task<bool> SaveChangesAsync();
     }
 }

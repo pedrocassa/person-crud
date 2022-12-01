@@ -45,12 +45,17 @@ namespace desafio_rsm.Repository
             return await _context.People.Where(p => p.PersonId == id).FirstOrDefaultAsync();
         }
 
+        public async Task<Boolean> FindDocument(string document)
+        {
+            return await _context.People.AnyAsync(p => p.Document == document);
+        }
+
         public async Task<int> CountPeople()
         {
             return await _context.People.CountAsync();
         }
 
-        public async Task<bool> SaveChangesAsync()
+        public async Task<Boolean> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() > 0;
         }

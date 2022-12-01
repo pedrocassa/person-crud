@@ -12,15 +12,41 @@ namespace desafio_rsm.Data
         public DbSet<Person> People { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
+        public override int SaveChanges()
+        {
+            AddTimestamps();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            AddTimestamps();
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        private void AddTimestamps()
+        {
+            var entities = ChangeTracker.Entries()
+                .Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            foreach (var entity in entities)
+            {
+                var now = DateTime.UtcNow;
+
+                if (entity.State == EntityState.Added)
+                {
+                    ((BaseEntity)entity.Entity).CreatedAt = now;
+                }
+                ((BaseEntity)entity.Entity).UpdatedAt = now;
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var personMb = modelBuilder.Entity<Person>();
 
-            personMb.Property(p => p.PersonId).HasColumnName("id").ValueGeneratedOnAdd();
+            personMb.Property(p => p.PersonId).ValueGeneratedOnAdd();
             personMb.HasKey(p => p.PersonId);
-            personMb.Property(p => p.Cpf).HasColumnName("cpf").IsRequired();
-            personMb.Property(p => p.FullName).HasColumnName("fullname");
-            personMb.Property(p => p.BirthDate).HasColumnName("birth_date");
 
 
             personMb.HasMany(p => p.Addresses).WithMany(p => p.People).UsingEntity<Dictionary<string, object>>(
@@ -28,28 +54,18 @@ namespace desafio_rsm.Data
                 j => j
                     .HasOne<Address>()
                     .WithMany()
-                    .HasForeignKey("AddressId")
-                    .HasConstraintName("FK_PersonAddress_Addresses_AddressId")
-                    .OnDelete(DeleteBehavior.Cascade),
+                    .HasForeignKey("AddressId"),
                 j => j
                     .HasOne<Person>()
                     .WithMany()
                     .HasForeignKey("PersonId")
-                    .HasConstraintName("FK_PersonAddress_People_PersonId")
-                    .OnDelete(DeleteBehavior.ClientCascade)
             );
 
             var addressMb = modelBuilder.Entity<Address>();
 
-            addressMb.Property(a => a.AddressId).HasColumnName("id").ValueGeneratedOnAdd();
+            addressMb.Property(a => a.AddressId).ValueGeneratedOnAdd();
             addressMb.HasKey(a => a.AddressId);
-            addressMb.Property(a => a.Cep).HasColumnName("cep").IsRequired();
-            addressMb.Property(a => a.Street).HasColumnName("street").IsRequired();
-            addressMb.Property(a => a.Number).HasColumnName("number").IsRequired();
-            addressMb.Property(a => a.Complement).HasColumnName("complement");
-            addressMb.Property(a => a.Neighborhood).HasColumnName("neighborhood").IsRequired();
-            addressMb.Property(a => a.City).HasColumnName("city").IsRequired();
-            addressMb.Property(a => a.Uf).HasColumnName("uf").IsRequired();
+            addressMb.Property(a => a.CreatedAt).ValueGeneratedOnAdd();
         }
     }
 }

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace desafiorsm.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,34 +16,42 @@ namespace desafiorsm.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "bigint", nullable: false)
+                    addressid = table.Column<long>(name: "address_id", type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Street = table.Column<string>(type: "text", nullable: false),
-                    Neighborhood = table.Column<string>(type: "text", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    Uf = table.Column<string>(type: "text", nullable: false),
-                    Complement = table.Column<string>(type: "text", nullable: false),
-                    Number = table.Column<string>(type: "text", nullable: false),
-                    cep = table.Column<string>(type: "text", nullable: false)
+                    street = table.Column<string>(type: "text", nullable: false),
+                    neighborhood = table.Column<string>(type: "text", nullable: false),
+                    city = table.Column<string>(type: "text", nullable: false),
+                    uf = table.Column<string>(type: "text", nullable: false),
+                    complement = table.Column<string>(type: "text", nullable: true),
+                    number = table.Column<string>(type: "text", nullable: false),
+                    cep = table.Column<string>(type: "text", nullable: false),
+                    active = table.Column<bool>(type: "boolean", nullable: false),
+                    createdat = table.Column<DateTime>(name: "created_at", type: "timestamp with time zone", nullable: true),
+                    updatedat = table.Column<DateTime>(name: "updated_at", type: "timestamp with time zone", nullable: true),
+                    deletedat = table.Column<DateTime>(name: "deleted_at", type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.id);
+                    table.PrimaryKey("PK_Addresses", x => x.addressid);
                 });
 
             migrationBuilder.CreateTable(
                 name: "People",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "bigint", nullable: false)
+                    personid = table.Column<long>(name: "person_id", type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FullName = table.Column<string>(type: "text", nullable: false),
-                    cpf = table.Column<string>(type: "text", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    name = table.Column<string>(type: "text", nullable: false),
+                    document = table.Column<string>(type: "text", nullable: false),
+                    referencedate = table.Column<DateTime>(name: "reference_date", type: "timestamp with time zone", nullable: false),
+                    active = table.Column<bool>(type: "boolean", nullable: false),
+                    createdat = table.Column<DateTime>(name: "created_at", type: "timestamp with time zone", nullable: true),
+                    updatedat = table.Column<DateTime>(name: "updated_at", type: "timestamp with time zone", nullable: true),
+                    deletedat = table.Column<DateTime>(name: "deleted_at", type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.id);
+                    table.PrimaryKey("PK_People", x => x.personid);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,13 +68,14 @@ namespace desafiorsm.Migrations
                         name: "FK_PersonAddress_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "id",
+                        principalColumn: "address_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PersonAddress_People_PersonId",
                         column: x => x.PersonId,
                         principalTable: "People",
-                        principalColumn: "id");
+                        principalColumn: "person_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

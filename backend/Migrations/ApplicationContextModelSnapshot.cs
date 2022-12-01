@@ -42,9 +42,13 @@ namespace desafiorsm.Migrations
                     b.Property<long>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("id");
+                        .HasColumnName("address_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("AddressId"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean")
+                        .HasColumnName("active");
 
                     b.Property<string>("Cep")
                         .IsRequired()
@@ -59,6 +63,15 @@ namespace desafiorsm.Migrations
                     b.Property<string>("Complement")
                         .HasColumnType("text")
                         .HasColumnName("complement");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
 
                     b.Property<string>("Neighborhood")
                         .IsRequired()
@@ -80,6 +93,10 @@ namespace desafiorsm.Migrations
                         .HasColumnType("text")
                         .HasColumnName("uf");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
                     b.HasKey("AddressId");
 
                     b.ToTable("Addresses");
@@ -90,23 +107,39 @@ namespace desafiorsm.Migrations
                     b.Property<long>("PersonId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("id");
+                        .HasColumnName("person_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("PersonId"));
 
-                    b.Property<DateTime>("BirthDate")
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean")
+                        .HasColumnName("active");
+
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("birth_date");
+                        .HasColumnName("created_at");
 
-                    b.Property<string>("Cpf")
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<string>("Document")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("cpf");
+                        .HasColumnName("document");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("fullname");
+                        .HasColumnName("name");
+
+                    b.Property<DateTime>("ReferenceDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("reference_date");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
 
                     b.HasKey("PersonId");
 
@@ -119,15 +152,13 @@ namespace desafiorsm.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_PersonAddress_Addresses_AddressId");
+                        .IsRequired();
 
                     b.HasOne("desafio_rsm.Models.Person", null)
                         .WithMany()
                         .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_PersonAddress_People_PersonId");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
