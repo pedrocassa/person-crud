@@ -48,7 +48,6 @@ namespace desafio_rsm.Data
             personMb.Property(p => p.PersonId).ValueGeneratedOnAdd();
             personMb.HasKey(p => p.PersonId);
 
-
             personMb.HasMany(p => p.Addresses).WithMany(p => p.People).UsingEntity<Dictionary<string, object>>(
                 "PersonAddress",
                 j => j

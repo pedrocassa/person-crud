@@ -4,7 +4,6 @@ using desafio_rsm.Models;
 using desafio_rsm.Wrappers;
 using desafio_rsm.Dtos;
 using desafio_rsm.Helpers;
-using System;
 
 namespace desafio_rsm.Controllers
 {
@@ -13,10 +12,12 @@ namespace desafio_rsm.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonRepository _repository;
+        private readonly IAddressRepository _addressRepository;
 
-        public PersonController(IPersonRepository repository)
+        public PersonController(IPersonRepository repository, IAddressRepository addressRepository)
         {
             _repository = repository;
+            _addressRepository = addressRepository;
         }
 
         [HttpGet]
@@ -57,28 +58,36 @@ namespace desafio_rsm.Controllers
             {
                 Name = dto.Name,
                 Document = dto.Document,
-                ReferenceDate = dto.ReferenceDate
+                ReferenceDate = dto.ReferenceDate,
+                Addresses = new List<Address>()
             };
 
-            var addresses = new List<Address>();
+            ICollection<Address> addresses = new List<Address>();
 
             foreach (var dtoAddress in dto.Addresses)
             {
-                var address = new Address
+                var dbAddress = await _addressRepository.FindAddressByInfo(dtoAddress);
+
+                if (dbAddress != null)
                 {
-                    Cep = dtoAddress.Cep,
-                    Street = dtoAddress.Street,
-                    Number = dtoAddress.Number,
-                    Complement = dtoAddress.Complement,
-                    Neighborhood = dtoAddress.Neighborhood,
-                    City = dtoAddress.City,
-                    Uf = dtoAddress.Uf
-                };
+                    person.Addresses.Add(dbAddress);
+                }
+                else
+                {
+                    var address = new Address
+                    {
+                        Cep = dtoAddress.Cep,
+                        Street = dtoAddress.Street,
+                        Number = dtoAddress.Number,
+                        Complement = dtoAddress.Complement,
+                        Neighborhood = dtoAddress.Neighborhood,
+                        City = dtoAddress.City,
+                        Uf = dtoAddress.Uf
+                    };
 
-                addresses.Append(address);
+                    person.Addresses.Add(address);
+                }
             }
-
-            person.Addresses = addresses;
 
             _repository.CreatePerson(person);
 

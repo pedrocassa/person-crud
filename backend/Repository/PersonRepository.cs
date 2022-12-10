@@ -17,17 +17,17 @@ namespace desafio_rsm.Repository
 
         public void CreatePerson(Person person)
         {
-            _context.Add(person);
+            _context.People.Add(person);
         }
 
         public void DeletePerson(Person person)
         {
-            _context.Remove(person);
+            _context.People.Remove(person);
         }
 
         public void UpdatePerson(Person person)
         {
-            _context.Update(person);
+            _context.People.Update(person);
         }
 
         public async Task<IEnumerable<Person>> GetPeople()
