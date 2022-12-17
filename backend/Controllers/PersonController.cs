@@ -54,6 +54,10 @@ namespace desafio_rsm.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreatePersonDTO dto)
         {
+            var personAlreadyCreated = await _repository.FindDocument(dto.Document);
+
+            if (personAlreadyCreated == true) return BadRequest("Documento já cadastrado.");
+
             var person = new Person
             {
                 Name = dto.Name,
