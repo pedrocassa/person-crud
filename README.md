@@ -1,7 +1,7 @@
 
-# Projeto para desenvolvimento pessoal
+# CRUD de Pessoas
 
-CRUD de pessoas utilizando tecnologias atuais de mercado
+Projeto desenvolvido com a finalidade de estudar algumas tecnologias atuais de mercado
 
 
 ## Como rodar o projeto
