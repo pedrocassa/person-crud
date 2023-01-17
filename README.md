@@ -9,7 +9,7 @@ Projeto desenvolvido com a finalidade de estudar algumas tecnologias atuais de m
 Clone o projeto
 
 ```bash
-  git clone https://github.com/pedrocassa/desafio-rsm.git
+  git clone https://github.com/pedrocassa/person-crud.git
 ```
 
 #### Backend
