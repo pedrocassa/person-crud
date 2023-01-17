@@ -1,7 +1,7 @@
 
-# Desafio RSM
+# Projeto para desenvolvimento pessoal
 
-CRUD de pessoas utilizando tecnologias de mercado
+CRUD de pessoas utilizando tecnologias atuais de mercado
 
 
 ## Como rodar o projeto
